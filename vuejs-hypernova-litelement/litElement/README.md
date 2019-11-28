@@ -36,7 +36,7 @@ polymer serve
 In `src`, are present 1 folder by web component. Each contain:
 
 - `my-element.js`: the script to render web component
-- `html file` as client for the web component
+- `html file` as client for the web component. Open it in your favorite browser.
 - other files to isolate some code
 
 The different webcomponents are:

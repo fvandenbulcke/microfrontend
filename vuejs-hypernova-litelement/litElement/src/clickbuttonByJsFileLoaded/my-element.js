@@ -6,50 +6,13 @@ import { until } from 'lit-html/directives/until.js';
 class MyElement extends LitElement {
 
   firstUpdated() {
-    //this.addClickOnButton();
-    this.executeWebpackScriptInShadowDom();
-  }
-
-  loadAndInsertScriptInShadowDom(){
-    this.getContent().then((response) => {
-      const shadow = this.shadowRoot
-      const firstDiv = shadow.querySelector('div#divlit');
-      const script = document.createElement('script');
-      script.textContent = `${response}`;
-      firstDiv.appendChild(script);
-    })
-  }
-
-  executeWebpackScriptInShadowDom(){
-    this.getContent('http://localhost:3030/client.js').then((data) => {
-      console.log('insertDivScriptInShadowDom()')
-      eval(data)
-    })
+    this.executeClickButtonScriptInShadowDom();
   }
 
   executeClickButtonScriptInShadowDom(){
-    this.getContent('http://127.0.0.1:8081/components/list-element/src/js_on_load/insertDivScript.js').then((data) => {
-      console.log('insertDivScriptInShadowDom()')
+    this.getContent('http://127.0.0.1:8081/components/list-element/src/clickbuttonByJsFileLoaded/click.js').then((data) => {
       eval(data)
     })
-  }
-
-  insertDivInShadowDom(){
-    const shadow = this.shadowRoot
-    const firstDiv = shadow.querySelector('div#divlit');
-    const mydiv = document.createElement('div');
-    mydiv.textContent = "my button";
-    firstDiv.appendChild(mydiv);
-  }
-
-  addClickOnButton(){
-    const shadow = this.shadowRoot
-    const button = shadow.querySelector('button#vueButtonId');
-    console.log('vueButtonId firstUpdated()')
-    this.checkIfButtonExist('first update')
-    button.onclick = () => {
-      console.log('handleClick()()()')
-    };
   }
 
   getContent(url) {
@@ -57,17 +20,12 @@ class MyElement extends LitElement {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (this.readyState === 4) {
-          //console.log("Body:\n" + this.responseText);
           resolve(this.responseText)
         }
       };
       xhr.open("GET", url, true);
       xhr.send('');
     })
-  }
-
-  loadingScript(){
-    return html`<script src="http://localhost:3030/click.js"></script>`
   }
 
   render(){

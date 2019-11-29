@@ -45,6 +45,10 @@ The different webcomponents are:
 
 - `clickbutton`: to inject a button with a callback link to its click event.
 
-- `hypernova_static`: to inject the expected code from `vue-server` project without call to the api. (non-operational)
+- `addTextShadowDomAfterRender`: to insert div with text in component after rendering.
+
+- `clickbuttonByJsFileLoaded`: to load a script to link method to button click event after component rendering.
 
 - `hypernova`: to inject the expected code from `vue-server` project with call to the api. (non-operational)
+
+<img src="https://user-images.githubusercontent.com/14977469/69885569-0d18f300-12de-11ea-8583-fe896a1e273a.png" width="200" />

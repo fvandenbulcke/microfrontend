@@ -6,30 +6,20 @@ import { until } from 'lit-html/directives/until.js';
 class MyElement extends LitElement {
 
   firstUpdated() {
-    this.executeWebpackScriptInShadowDom();
+    this.insertDivInShadowDom();
   }
 
-  executeWebpackScriptInShadowDom(){
-    this.getContent('http://localhost:3030/client.js').then((data) => {
-      console.log('insertDivScriptInShadowDom()')
-      eval(data)
-    })
-  }
-
-  getContent(url) {
-    return new Promise(function(resolve, reject){
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (this.readyState === 4) {
-          resolve(this.responseText)
-        }
-      };
-      xhr.open("GET", url, true);
-      xhr.send('');
-    })
+  insertDivInShadowDom(){
+    const shadow = this.shadowRoot
+    const firstDiv = shadow.querySelector('div#divlit');
+    const mydiv = document.createElement('div');
+    mydiv.textContent = "my button";
+    firstDiv.appendChild(mydiv);
   }
 
   render(){
+    console.log('my-element : render from js_on_load');
+    
     const content = html`
     <div id="divlit">
     <h2 class="k-product-list__header">Series</h2>

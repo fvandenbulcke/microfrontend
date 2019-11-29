@@ -6,11 +6,11 @@ import { until } from 'lit-html/directives/until.js';
 class MyElement extends LitElement {
 
   firstUpdated() {
-    this.addClickOnButton();
-    //this.insertScriptInShadowDom();
+    //this.addClickOnButton();
+    this.executeWebpackScriptInShadowDom();
   }
 
-  insertScriptInShadowDom(){
+  loadAndInsertScriptInShadowDom(){
     this.getContent().then((response) => {
       const shadow = this.shadowRoot
       const firstDiv = shadow.querySelector('div#divlit');
@@ -20,14 +20,26 @@ class MyElement extends LitElement {
     })
   }
 
-  insertDivInShadowDom(){
-    this.getContent().then((response) => {
-      const shadow = this.shadowRoot
-      const firstDiv = shadow.querySelector('div#divlit');
-      const mydiv = document.createElement('div');
-      mydiv.textContent = "my button";
-      firstDiv.appendChild(mydiv);
+  executeWebpackScriptInShadowDom(){
+    this.getContent('http://localhost:3030/client.js').then((data) => {
+      console.log('insertDivScriptInShadowDom()')
+      eval(data)
     })
+  }
+
+  executeClickButtonScriptInShadowDom(){
+    this.getContent('http://127.0.0.1:8081/components/list-element/src/js_on_load/insertDivScript.js').then((data) => {
+      console.log('insertDivScriptInShadowDom()')
+      eval(data)
+    })
+  }
+
+  insertDivInShadowDom(){
+    const shadow = this.shadowRoot
+    const firstDiv = shadow.querySelector('div#divlit');
+    const mydiv = document.createElement('div');
+    mydiv.textContent = "my button";
+    firstDiv.appendChild(mydiv);
   }
 
   addClickOnButton(){
@@ -35,23 +47,21 @@ class MyElement extends LitElement {
     const button = shadow.querySelector('button#vueButtonId');
     console.log('vueButtonId firstUpdated()')
     this.checkIfButtonExist('first update')
-    button.onclick = this.handleClick;
+    button.onclick = () => {
+      console.log('handleClick()()()')
+    };
   }
 
-  handleClick(){
-    console.log('handleClick()()()')
-  }
-
-  getContent() {
+  getContent(url) {
     return new Promise(function(resolve, reject){
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (this.readyState === 4) {
-          console.log("Body:\n" + this.responseText);
+          //console.log("Body:\n" + this.responseText);
           resolve(this.responseText)
         }
       };
-      xhr.open("GET", 'http://localhost:3030/click.js', true);
+      xhr.open("GET", url, true);
       xhr.send('');
     })
   }

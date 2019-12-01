@@ -10,7 +10,7 @@ class MyElement extends LitElement {
   }
 
   executeClickButtonScriptInShadowDom(){
-    this.getContent('http://127.0.0.1:8081/components/list-element/src/clickbuttonByJsFileLoaded/click.js').then((data) => {
+    this.getContent('http://127.0.0.1:8081/components/list-element/src/attachClickActionFromScriptFile/click.js').then((data) => {
       eval(data)
     })
   }

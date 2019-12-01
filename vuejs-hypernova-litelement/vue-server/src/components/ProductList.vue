@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     addItem() {
-      this.items.push({ title: 'New Serie', imageUrl: 'https://via.placeholder.com/400' })
+      this.items.push({ title: 'New Serie', imageUrl: 'https://via.placeholder.com/200' })
     }
   }
 }

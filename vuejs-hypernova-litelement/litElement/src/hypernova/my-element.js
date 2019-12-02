@@ -13,15 +13,12 @@ class MyElement extends LitElement {
     contentService.getContent().then((data) => {
       const loyaltyDiv = this.shadowRoot.querySelector('div#loyalty');
       loyaltyDiv.innerHTML = data;
-      this.executeClickButtonScriptInShadowDom();
+      this.executeWebpackScriptInShadowDom();
     });
   }
 
   render(){
     console.log('render()')
-    //const content = contentService.getContent().then((data) => html([`${data}`]));
-    //return html` ${until(content, html`<span>Loading...</span>`)}`;
-    //return html`${until(content)}}`;
     return html`<div id="loyalty"></div>`;
   }
 
@@ -33,7 +30,6 @@ class MyElement extends LitElement {
 
   executeWebpackScriptInShadowDom(){
     this.getContent('http://localhost:3030/client.js').then((data) => {
-      console.log('insertDivScriptInShadowDom()')
       eval(data)
     })
   }

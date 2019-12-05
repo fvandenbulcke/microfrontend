@@ -9,7 +9,6 @@ class MyElement extends LitElement {
 // https://stackblitz.com/edit/lit-element-example-ku954n?file=index.js
 
   firstUpdated() {
-    console.log('firstUpdated()')
     contentService.getContent().then((data) => {
       const loyaltyDiv = this.shadowRoot.querySelector('div#loyalty');
       loyaltyDiv.innerHTML = data;
@@ -18,7 +17,6 @@ class MyElement extends LitElement {
   }
 
   render(){
-    console.log('render()')
     return html`<div id="loyalty"></div>`;
   }
 

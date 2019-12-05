@@ -6,8 +6,6 @@ export default class contentService {
       xhr.onreadystatechange = function() {
         if (this.readyState === 4) {
           const response = JSON.parse(this.responseText);
-          console.log("Body :");
-          console.log(response);
           resolve(response.results.uuid.html)
         }
       };

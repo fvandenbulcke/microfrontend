@@ -1,8 +1,6 @@
-console.log('dans le script');
+console.log('Execute the loyalty view script');
 class LoyaltyView {
   constructor() {
-    console.log('LoyaltyView constructor');
-    console.log(document);
     const loyaltyDiv = document.getElementById("loyalty");
 
     let content = '<div data-hypernova-key="ProductList" data-hypernova-id="bea75a52-b174-46ce-ab4c-dccb48818b01">';

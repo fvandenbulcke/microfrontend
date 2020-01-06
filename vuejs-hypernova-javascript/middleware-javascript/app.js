@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const Stream = require('stream');
 const StringBuilder = require("string-builder");
 const fetch = require("node-fetch");
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -27,14 +29,26 @@ app.get('/script', function(req, res){
  */
 app.get('/', function(req, res){
   let mavue = '<div data-hypernova-key=\"ProductList\" data-hypernova-id=\"50447b5f-1a38-4abe-916c-87d3e1b7d1de\"><div data-server-rendered=\"true\" class=\"k-product-list\"><h2 class=\"k-product-list__header\">Series</h2> <ul><li class=\"k-product-item\"><img src=\"https://via.placeholder.com/200\" class=\"k-product-item__image\"> <h4 class=\"k-product-item__title\">serie</h4></li></ul> <button id=\"vueButtonId\">Add Item</button></div></div>';
-  mavue +='<script src="http://localhost:3030/client.js"></script>';
-  mavue += '<script type="application/json" data-hypernova-key="ProductList" data-hypernova-id="2d86d7f4-ffef-42ab-8d6a-0a4ba9c5ff53"><!--{"title":"Series","items":[{"title":"serie","imageUrl":"https://via.placeholder.com/200"}]}--></script>';
-  
+  mavue += ' <script type="application/json" data-hypernova-key="ProductList" data-hypernova-id="2d86d7f4-ffef-42ab-8d6a-0a4ba9c5ff53"><!--{"title":"Series","items":[{"title":"serie","imageUrl":"https://via.placeholder.com/200"}]}--></script>';
+  // mavue +='<script defer src="http://localhost:3030/client.js"></script>';
+  console.log('JSON.stringify /');
+  console.log(mavue);
+  console.log('');
+
+  /* const body = document.querySelector('body');
+  const script = document.createElement( 'script' );
+  script.src= 'http://localhost:3030/client.js';
+  body.appendChild(script); */
+
   let sb = new StringBuilder();
   sb.append('class LoyaltyView {');
   sb.append('constructor() {');
   sb.append('console.log(\'LoyaltyView constructor\');');
-  sb.append(`const loyaltyDiv = document.getElementById("loyalty");loyaltyDiv.innerHTML = \'${mavue}\';`);
+  sb.append('const loyaltyDiv = document.getElementById("loyalty");');
+  sb.append(`loyaltyDiv.appendChild(document.createRange().createContextualFragment(\'${mavue}\'));`);
+  sb.append('const script = document.createElement(\'script\');');
+  sb.append('script.src= \'http://localhost:3030/client.js\';');
+  sb.append('loyaltyDiv.appendChild(script);');
   sb.append('};};');
 
   res.send(sb.toString());
@@ -48,12 +62,19 @@ app.get('/api', function(req, res){
   getView().then((view) => {
     console.log('getView()');
     console.log(view);
-    
+    console.log('');
+
+    const clientScriptUrl = '\'http://localhost:3030/client.js\'';
+
     let sb = new StringBuilder();
     sb.append('class LoyaltyView2 {');
     sb.append('constructor() {');
-    sb.append('console.log(\'LoyaltyView constructor\');');
-    sb.append(`const loyaltyDiv = document.getElementById("loyalty2");loyaltyDiv.innerHTML = \'${view.toString()}\';`);
+    sb.append('console.log(\'LoyaltyView constructor2\');');
+    sb.append('const loyaltyDiv = document.getElementById("loyalty2");');
+    sb.append(`loyaltyDiv.appendChild(document.createRange().createContextualFragment(\'${view}\'));`);
+    sb.append('const script = document.createElement(\'script\');');
+    sb.append(`script.src= ${clientScriptUrl};`);
+    sb.append('loyaltyDiv.appendChild(script);');
     sb.append('};};');
   
     res.send(sb.toString());
@@ -81,6 +102,8 @@ function getView(){
     body: JSON.stringify(payload),
     headers: { 'Content-Type': 'application/json' },
   })
-  .then(res => res.json())
-  .then(res => res.results.uuid.html);
+  .then(res => {
+    return res.json();
+  })
+  .then(res => JSON.parse(JSON.stringify(res.results.uuid.html).replace('\\n',' ')));
 }

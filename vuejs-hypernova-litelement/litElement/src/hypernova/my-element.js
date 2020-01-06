@@ -28,7 +28,7 @@ class MyElement extends LitElement {
 
   executeWebpackScriptInShadowDom(){
     this.getContent('http://localhost:3030/client.js').then((data) => {
-      eval(data)
+      // eval(data)
     })
   }
 

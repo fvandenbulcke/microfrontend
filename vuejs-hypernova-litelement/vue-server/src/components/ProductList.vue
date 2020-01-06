@@ -24,8 +24,17 @@ export default {
   },
   methods: {
     addItem() {
+      console.log('ProductList.vuejs:')
+      console.log(document)
       this.items.push({ title: 'New Serie', imageUrl: 'https://via.placeholder.com/200' })
+      const event = new CustomEvent('addProductItem', { detail: 'item' });
+      document.dispatchEvent(event)
     }
   }
 }
 </script>
+<style scoped>
+  /* h2 {
+    color: red
+  } */
+</style>

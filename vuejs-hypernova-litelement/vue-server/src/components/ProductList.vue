@@ -7,7 +7,8 @@
         <h4 class="k-product-item__title">{{ item.title }}</h4>
       </li>
     </ul>
-    <button id="vueButtonId" @click="addItem">Add Item</button>
+    <!-- <button id="vueButtonId" @click="addItem">Add Item</button> -->
+    <v-btn large color="primary" id="vueButtonId" @click="addItem">Add Item</v-btn>
   </div>
 </template>
 <script>

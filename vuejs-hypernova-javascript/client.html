@@ -1,13 +1,16 @@
 <head>
   <!-- get static script -->
   <!-- <script src="http://localhost:3000/loyaltyview.js"></script> -->
-  <script src="http://localhost:3000"></script>
+  <!-- <script src="http://localhost:3000"></script> -->
   <script src="http://localhost:3000/api"></script>
   <script>
     window.addEventListener("DOMContentLoaded", (event) => {
       console.log("DOM entièrement chargé et analysé");
-      new LoyaltyView();
+      // new LoyaltyView();
       new LoyaltyView2();
+    });
+    document.addEventListener("addProductItem", function(){ 
+      console.log('addProductItem');
     });
   </script>
 </head>

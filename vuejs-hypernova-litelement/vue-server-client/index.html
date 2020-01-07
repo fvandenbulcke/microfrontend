@@ -5,10 +5,30 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
+      <script>
+        console.log('dans le script du html');
+        document.addEventListener('DOMContentLoaded', function(){ 
+          console.log('dans DOMContentLoaded');
+          const body = document.querySelector('body');
+          const script = document.createElement( 'script' );
+          script.src= 'http://localhost:3030/client.js';
+          body.appendChild(script);
+        }, false);
+      </script>
     </head>
     <body>
-      <div data-hypernova-key="ProductList" data-hypernova-id="bea75a52-b174-46ce-ab4c-dccb48818b01"><div data-server-rendered="true" class="k-product-list"><h2 class="k-product-list__header">Series</h2> <ul><li class="k-product-item"><img src="https://via.placeholder.com/200" class="k-product-item__image"> <h4 class="k-product-item__title">Loyalty</h4></li></ul> <button>Add Item</button></div></div>
-<script type="application/json" data-hypernova-key="ProductList" data-hypernova-id="bea75a52-b174-46ce-ab4c-dccb48818b01"><!--{"title":"Series","items":[{"title":"Loyalty","imageUrl":"https://via.placeholder.com/400"}]}--></script>
-<script defer="defer" src="http://localhost:3030/client.js"></script>
+      <div data-hypernova-key="ProductList" data-hypernova-id="bea75a52-b174-46ce-ab4c-dccb48818b01">
+        <div data-server-rendered="true" class="k-product-list"><h2 class="k-product-list__header">Series</h2>
+          <ul><li class="k-product-item"><img src="https://via.placeholder.com/200" class="k-product-item__image">
+            <h4 class="k-product-item__title">Loyalty</h4>
+          </li>
+        </ul>
+          <button>Add Item</button>
+        </div>
+      </div>
+      <script type="application/json" data-hypernova-key="ProductList" data-hypernova-id="bea75a52-b174-46ce-ab4c-dccb48818b01"><!--{"title":"Series","items":[{"title":"Loyalty","imageUrl":"https://via.placeholder.com/400"}]}--></script>
+      <script>
+        console.log('dans le script de fin du html');
+      </script>
     </body>
     </html>

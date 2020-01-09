@@ -1,6 +1,7 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const NodemonPlugin = require('nodemon-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const server = {
   target: 'node',
@@ -19,12 +20,31 @@ const server = {
         test: /\.vue$/,
         exclude: /node_modules/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+              // options...
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
-    new NodemonPlugin()
+    new NodemonPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/mystyles.css'
+    })
   ]
 }
 
@@ -50,11 +70,30 @@ const client = {
         test: /\.vue$/,
         exclude: /node_modules/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+              // options...
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/mystyles.css'
+    })
   ]
 }
 

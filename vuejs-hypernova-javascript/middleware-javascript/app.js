@@ -68,6 +68,9 @@ app.get('/view', function(req, res){
 app.get('/script/view/script', function(req, res){
   request('http://localhost:3030/client.js').pipe(res);
 });
+app.get('/script/view/css', function(req, res){
+  request('http://localhost:3030/css/mystyles.css').pipe(res);
+});
 
 function getView(token, customer){
   const payload = {

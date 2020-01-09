@@ -1,6 +1,6 @@
 <template>
     <div class="k-product-list">
-      <h2 class="k-product-list__header">Account Infos for customer {{customer}}</h2>
+      <h2 class="k-product-list__header title">Account Infos for customer {{customer}}</h2>
       <ul v-if="account">
         <li class="k-product-item">
           <span>id : </span><span style="font-weight: bold;">{{ account.id }}</span>
@@ -12,7 +12,9 @@
           <span>status : </span><span style="font-weight: bold;">{{ account.status }}</span>
         </li>
       </ul>
-      <button id="vueButtonId" @click="addItem">Add Item</button>
+      <div class="buttons">
+        <button id="vueButtonId" class="button is-primary" @click="addItem">Add Item</button>
+      </div>
     </div>
 </template>
 <script>

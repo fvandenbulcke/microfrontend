@@ -1,5 +1,12 @@
 class LoyaltyView {
   constructor(tagId,token,customer) {
+    const clientUrl = 'http://localhost:3000/script/view';
+    const link = document.createElement('link');
+    link.rel= 'stylesheet';
+    link.type= 'text/css';
+    link.href= `${clientUrl}/css`;
+    document.head.appendChild(link);
+
     // fetch the html then add a script tag to load the module client
     fetch(`http://localhost:3000/view?token=${token}&customer=${customer}`, { method: 'GET' } )
       .then(response => response.body.getReader().read())
@@ -13,7 +20,7 @@ class LoyaltyView {
         // append script tag in target div
         const clientScriptUrl = 'http://localhost:3000/script/view/script';
         const script = document.createElement('script');
-        script.src= clientScriptUrl;
+        script.src= `${clientUrl}/script`;;
         loyaltyDiv.appendChild(script);
       });
   }

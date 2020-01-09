@@ -3,10 +3,12 @@ const loyaltyUrl = 'https://gateway-gravitee-uat.euw3-gcp1-private.acp.adeo.com'
 
 export default {
   getLoyaltyAccount ({ customerNumber, token }) {
+    // loyaltyClient(token)
+    console.log('getLoyaltyAccount()')
     return loyaltyClient(token)
       .get(`${loyaltyUrl}/customers-management/v1/loyalty-accounts?customer=${customerNumber}&includeLoyaltyProgram=true`)
       .then(response => response && response.data)
-  },
+  }/* ,
   referenceCard (customerNumber, requestBody) {
     return loyaltyClient()
       .post(`${loyaltyUrl}/customers-management/v1/loyalty-accounts/_referenceCard?customer=${customerNumber}`, requestBody)
@@ -21,5 +23,5 @@ export default {
     return loyaltyClient()
       .post(`${loyaltyUrl}/customers-management/v1/loyalty-accounts/_invalidateCard?supportNumber=${supportNumber}`, null)
       .then(response => response && response.data)
-  }
+  } */
 }

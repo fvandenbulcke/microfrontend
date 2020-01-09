@@ -1,15 +1,17 @@
 class LoyaltyView {
   constructor(tagId,token,customer) {
-    fetch(`http://localhost:3000/view?token=${token}&customer=${customer}`, { method: 'get','Access-Control-Allow-Origin':'*' })
-      .then((response) => response.body.getReader())
-      .then((reader) => reader.read())
+    // fetch the html then add a script tag to load the module client
+    fetch(`http://localhost:3000/view?token=${token}&customer=${customer}`, { method: 'GET' } )
+      .then(response => response.body.getReader().read())
+      .then(content => String.fromCharCode.apply(null, content.value))
       .then((view) => {
-        console.log('dans le then script')
-        console.log(view)
-        const clientScriptUrl = 'http://localhost:3030/client.js';
-
+        
+        // append html view in target div
         const loyaltyDiv = document.getElementById(tagId);
         loyaltyDiv.appendChild(document.createRange().createContextualFragment(view));
+        
+        // append script tag in target div
+        const clientScriptUrl = 'http://localhost:3000/script/view/script';
         const script = document.createElement('script');
         script.src= clientScriptUrl;
         loyaltyDiv.appendChild(script);

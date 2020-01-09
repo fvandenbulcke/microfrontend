@@ -4,7 +4,7 @@ getView = function getView(token,customer){
       "name": "ProductList",
       "data": {
         token,
-        customer
+        customer,
       }
     }
   };

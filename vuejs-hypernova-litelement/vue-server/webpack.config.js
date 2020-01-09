@@ -1,6 +1,5 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const NodemonPlugin = require('nodemon-webpack-plugin')
 
 const server = {
@@ -20,18 +19,12 @@ const server = {
         test: /\.vue$/,
         exclude: /node_modules/,
         use: 'vue-loader'
-      },
-      {
-        test: /\.sass$/,
-        exclude: /node_modules/,
-        use: 'sass-loader'
       }
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
-    new NodemonPlugin(),
-    new VuetifyLoaderPlugin()
+    new NodemonPlugin()
   ]
 }
 
@@ -61,8 +54,7 @@ const client = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-    new VuetifyLoaderPlugin()
+    new VueLoaderPlugin()
   ]
 }
 

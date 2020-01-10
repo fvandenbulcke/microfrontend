@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<style>
+		#parent_div_1 {
+		  width: 15%;
+		  height: 100px;
+		  border: 1px solid red;
+		  margin-left: 10px;
+		  margin-right: 10px;
+		  float: left;
+		}
+	</style>
+  </head>
+  <body>
+	<h1>TEST IMPORT MODULE</h1>
+	<div id='parent_div_1'></div>	
+	<div>
+	
+	  <div class="columns">
+		<div class="column">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content">
+				1298
+			  </div>
+			  <progress class="progress is-link" value="1298" max="1500"/>
+			</div>
+			<article class="panel is-primary">
+				<a class="panel-block is-active">
+				  <span class="panel-icon">
+					<i class="fas fa-book" aria-hidden="true"></i>
+				  </span>
+				  bulma
+				</a>
+			</article>
+		  </div>
+		  <br/>
+		  <div class="card">
+			<header class="card-header">
+			  <p class="card-header-title">
+					<span class="panel-icon">
+						<i class="fas fa-star has-text-link" aria-hidden="true"></i>
+					</span>
+					Advantages
+			  </p>
+			  </a>
+			</header>
+			<div class="card-content">
+			  <div class="content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+				<a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+				<br/>
+				<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+			  </div>
+			</div>
+			<article class="panel is-primary">
+				<a class="panel-block is-active">
+				  REGULARIZATION
+				</a>
+			</article>
+		  </div>
+		</div>
+		<div class="column">
+		  <div class="card">
+				<header class="card-header">
+					<p class="card-header-title">
+						<span class="panel-icon">
+							<i class="fas fa-id-card has-text-link" aria-hidden="true"></i>
+						</span>
+						Cards
+					</p>
+					<a href="#" class="card-header-icon" aria-label="more options">
+						<span class="icon">
+							<i class="fas fa-angle-down" aria-hidden="true"></i>
+						</span>
+					</a>
+				</header>
+				<div class="card-content">
+					<div class="content">
+						<ul type="1">
+							<li><span>id : </span><span style="font-weight: bold;">{{ account.id }}</span></li>
+							<li><span>bu code : </span><span style="font-weight: bold;">{{ account.buId }}</span></li>
+							<li><span>status : </span><span style="font-weight: bold;">{{ account.status }}</span></li>
+						</ul>
+					</div>
+				</div>
+				<article class="panel is-primary">
+					<a class="panel-block is-active">
+						HISTORY
+						<span class="panel-icon has-text-right">
+							<i class="fas fa-id-card has-text-link" aria-hidden="true"></i>
+						</span>
+					</a>
+					<a class="panel-block is-active">
+						CHANGE SUPPORT
+					</a>
+					<a class="panel-block is-active">
+						RENEWAL
+					</a>
+				</article>
+		  </div>
+		</div>
+	  </div>
+	
+	
+	</div>
+  </body>
+</html>

@@ -3,7 +3,6 @@ import { renderVue, Vue } from 'hypernova-vue'
 import express from 'express'
 import path from 'path'
 import './mystyles.scss'
-
 import ProductList from './components/ProductList.vue'
 
 hypernova({

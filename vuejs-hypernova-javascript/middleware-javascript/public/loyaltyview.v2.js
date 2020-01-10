@@ -1,5 +1,5 @@
 class LoyaltyView {
-  constructor(tagId,token,customer) {
+  constructor(tagId,token,customer,modules) {
     const clientUrl = 'http://localhost:3000/script/view';
     const link = document.createElement('link');
     link.rel= 'stylesheet';
@@ -18,7 +18,6 @@ class LoyaltyView {
         loyaltyDiv.appendChild(document.createRange().createContextualFragment(view));
         
         // append script tag in target div
-        const clientScriptUrl = 'http://localhost:3000/script/view/script';
         const script = document.createElement('script');
         script.src= `${clientUrl}/script`;;
         loyaltyDiv.appendChild(script);

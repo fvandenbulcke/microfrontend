@@ -13,6 +13,7 @@
     "bulma": "^0.8.0",
     "hypernova": "^2.5.0",
     "hypernova-vue": "^1.0.0",
+    "postcss-loader": "^3.0.0",
     "vue": "^2.6.6",
     "vue-server-renderer": "^2.6.6"
   },

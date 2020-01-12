@@ -3,11 +3,19 @@ import { renderVue, Vue } from 'hypernova-vue'
 import express from 'express'
 import path from 'path'
 import './mystyles.scss'
+import Advantages from './components/Advantages.vue'
+import Account from './components/Account.vue'
 import ProductList from './components/ProductList.vue'
 
 hypernova({
   devMode: true,
   getComponent (name, context) {
+    if (name === 'Advantages') {
+      return renderVue(name, Vue.extend(Advantages))
+    }
+    if (name === 'Account') {
+      return renderVue(name, Vue.extend(Account))
+    }
     if (name === 'ProductList') {
       return renderVue(name, Vue.extend(ProductList))
     }

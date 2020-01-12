@@ -3,7 +3,11 @@
 	<script>
 	window.addEventListener("DOMContentLoaded", (event) => {
 	  console.log("DOM entièrement chargé et analysé");
-	  new LoyaltyView('loyalty','b8f0ebf2-625a-44d9-ac5c-0357aba44c19','1');
+    const modules = [
+      {tagId: 'advantages', code: 'ADVANTAGES'},
+      {tagId: 'account', code: 'ACCOUNT'}
+    ];
+	  new LoyaltyView('b8f0ebf2-625a-44d9-ac5c-0357aba44c19','1',modules);
 	});
 	document.addEventListener("addProductItem", function(){ 
 	  console.log('event: addProductItem');
@@ -12,17 +16,26 @@
 	<style>
 		#parent_div_1 {
 		  width: 15%;
-		  height: 100px;
 		  border: 1px solid red;
 		  margin-left: 10px;
 		  margin-right: 10px;
 		  float: left;
 		}
+    .loyalty_div {
+		  width: 40%;
+		  float: left;
+		  margin-left: 10px;
+    }
 	</style>
 </head>
 <body>
 	<h1>TEST IMPORT MODULE</h1>
-	<div id='parent_div_1'></div>
-	<div id="loyalty"></div>
+	<div id='parent_div_1'>
+  Sed non libero condimentum, fermentum lectus sed, euismod leo. Donec gravida, dui sit amet scelerisque euismod, diam tortor ultricies eros, id ultrices nulla ligula vitae justo.
+  Fusce eu facilisis nulla. Praesent nec congue enim. Nunc eget porta eros, bibendum dignissim nulla. Curabitur et leo vestibulum, aliquet sapien quis, dignissim metus. Curabitur non
+  varius dui.
+  </div>
+	<div id="advantages" class="loyalty_div"></div>
+	<div id="account" class="loyalty_div"></div>
 
 </body>

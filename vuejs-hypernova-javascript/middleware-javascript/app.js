@@ -61,9 +61,16 @@ app.get('/script/view', function(req, res){
   res.download('./public/loyaltyview.v2.js', 'loyaltyview.js')
 });
 app.get('/view', function(req, res){
-  const {token, customer} = req.query;
-  getView(token, customer)
-    .then((view) => {res.send(view);});
+  const {token, customer, code} = req.query;
+  let getViewPromise = null;
+  if(code === 'ACCOUNT'){
+    getViewPromise =  getAccountView(token, customer);
+  }
+  if(code === 'ADVANTAGES'){
+    getViewPromise =  getAdvantagesView(token, customer);
+  }
+
+  getViewPromise.then((view) => {res.send(view);});
 });
 app.get('/script/view/script', function(req, res){
   request('http://localhost:3030/client.js').pipe(res);
@@ -72,14 +79,18 @@ app.get('/script/view/css', function(req, res){
   request('http://localhost:3030/css/mystyles.css').pipe(res);
 });
 
-function getView(token, customer){
+function getAccountView(token, customer){
+  return getView('Account', null);
+}
+function getAdvantagesView(token, customer){
+  return getView('Advantages', null);
+}
+
+function getView(name, data){
   const payload = {
     "uuid": {
-      "name": "ProductList",
-      "data": {
-        "token": token || "no_token",
-        "customer": customer || "no_customer"
-      }
+      name,
+      data,
     }
   };
 

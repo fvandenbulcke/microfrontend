@@ -69,6 +69,9 @@ app.get('/view', function(req, res){
   if(code === 'ADVANTAGES'){
     getViewPromise =  getAdvantagesView(token, customer);
   }
+  if(code === 'POINTS'){
+    getViewPromise =  getPointsView(token, customer);
+  }
 
   getViewPromise.then((view) => {res.send(view);});
 });
@@ -80,7 +83,14 @@ app.get('/script/view/css', function(req, res){
 });
 
 function getAccountView(token, customer){
-  return getView('Account', null);
+  const data = {
+    token,
+    customer,
+  }
+  return getView('Account', data);
+}
+function getPointsView(token, customer){
+  return getView('Points', null);
 }
 function getAdvantagesView(token, customer){
   return getView('Advantages', null);

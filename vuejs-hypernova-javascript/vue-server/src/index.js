@@ -5,6 +5,7 @@ import path from 'path'
 import './mystyles.scss'
 import Advantages from './components/Advantages.vue'
 import Account from './components/Account.vue'
+import Points from './components/Points.vue'
 import ProductList from './components/ProductList.vue'
 
 hypernova({
@@ -15,6 +16,9 @@ hypernova({
     }
     if (name === 'Account') {
       return renderVue(name, Vue.extend(Account))
+    }
+    if (name === 'Points') {
+      return renderVue(name, Vue.extend(Points))
     }
     if (name === 'ProductList') {
       return renderVue(name, Vue.extend(ProductList))

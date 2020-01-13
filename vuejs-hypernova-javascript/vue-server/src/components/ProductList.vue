@@ -8,7 +8,6 @@
           </div>
           <progress class="progress is-link" value="1298" max="1500"
             @mouseover="logMessage()"
-            @mouseleave="logMessage()"
           />
         </div>
         <article class="panel is-primary">
@@ -71,7 +70,7 @@
             <span class="panel-icon">
             <i class="fas fa-book" aria-hidden="true"></i>
             </span>
-            bulma
+            bulma {{ account.buId }}
           </a>
           <a class="panel-block">
             <span class="panel-icon">
@@ -111,6 +110,7 @@ export default {
     }
   },
   beforeMount() {
+    console.log('beforeMount()')
     loyaltyService.getLoyaltyAccount({ customerNumber: this.customer, token: this.token })
       .then((response) => this.account = response);
   },

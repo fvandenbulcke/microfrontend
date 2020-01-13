@@ -42,15 +42,20 @@
 </template>
 
 <script>
+import loyaltyService from '../services/loyaltyService';
+
 export default {
   data(){
     return {
       account: {
-        id: "1236547899",
-        buId: 26,
-        status: "VALID"
+        buId: "buId"
       }
     }
+  },
+  beforeMount() {
+    console.log('Account beforeMount()')
+    loyaltyService.getLoyaltyAccount({ customerNumber: this.customer, token: this.token })
+      .then((response) => this.account = response);
   },
 }
 </script>

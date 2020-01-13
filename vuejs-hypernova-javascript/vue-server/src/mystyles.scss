@@ -6,6 +6,10 @@
 // Update Bulma's global variables
 $message-colors: [];
 
+.card {
+  margin-bottom: 21px;
+}
+
 // Import only what you need from Bulma
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";

@@ -1,0 +1,45 @@
+{
+  "name": "loyalty-module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "lint": "vue-cli-service lint",
+    "module": "webpack --config ./build/webpack.config.js --mode production"
+  },
+  "dependencies": {
+    "core-js": "^3.4.4",
+    "express": "^4.17.1",
+    "hypernova": "^2.5.0",
+    "hypernova-vue": "^2.0.0",
+    "hypernova-vuex": "^0.1.1",
+    "postcss-loader": "^3.0.0",
+    "vue": "^2.6.10",
+    "vue-server-renderer": "^2.6.11",
+    "vuex": "^3.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-plugin-unit-jest": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-eslint": "^10.0.3",
+    "bulma": "^0.8.0",
+    "css-loader": "^3.4.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

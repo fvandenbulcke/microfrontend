@@ -1,0 +1,32 @@
+FROM node:11.10.0-alpine
+
+# Create a directory where our app will be placed
+RUN mkdir -p /usr/hypernova
+
+# Change directory so that our commands run inside this new directory
+WORKDIR /usr/hypernova
+
+# Copy dependency definitions
+COPY ./build ./build
+
+# Copy dependency definitions
+COPY package.json .
+
+# Get all the code needed to run the app
+COPY ./src ./src
+
+RUN ls -lrt
+
+RUN npm install
+RUN npm install express postcss-loader vue-server-renderer hypernova hypernova-vue@2.0.0
+RUN npm install webpack webpack-cli --save-dev
+
+# RUN npm install hypernova hypernova-vue postcss-loader vue-server-renderer express webpack webpack-cli
+
+RUN ./node_modules/.bin/webpack --config ./build/webpack.config.js --mode production
+
+# Expose the port the app runs in
+EXPOSE 3030
+
+# Serve the app
+CMD ["node", "dist/server.js"]

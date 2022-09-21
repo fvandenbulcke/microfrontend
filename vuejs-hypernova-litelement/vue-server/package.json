@@ -13,7 +13,7 @@
     "hypernova-vue": "^1.0.0",
     "vue": "^2.6.6",
     "vue-server-renderer": "^2.6.6",
-    "vuetify": "^2.2.1"
+    "vuetify": "^2.6.10"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
